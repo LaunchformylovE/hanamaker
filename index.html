@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas에 텍스트와 이미지 그리기</title>
+    <title>이하나 생성기</title>
     <style>
         h2 {
             text-align: center;
@@ -20,6 +20,7 @@
     <label for="textInput">텍스트 입력:</label>
     <input type="text" id="textInput">
     <button onclick="drawTextAndImage()">텍스트와 이미지 그리기</button>
+    <button onclick="saveCanvasAsImage()">캔버스 저장</button>
     <script>
         function drawTextAndImage() {
             const canvas = document.getElementById("myCanvas");
@@ -42,7 +43,7 @@
 
                 // 텍스트 설정
                 const text = document.getElementById("textInput").value; // 입력된 텍스트 가져오기
-                const lineHeight = 100; // 텍스트 간격
+                const lineHeight = 90; // 텍스트 간격
 
                 // 텍스트 그리기
                 ctx.textAlign = "left"; // 텍스트 정렬: 왼쪽
@@ -63,6 +64,14 @@
                 }
             };
             img.src = "leehana.png"; // 이미지 파일 경로를 지정해주세요.
+        }
+
+        function saveCanvasAsImage() {
+            const canvas = document.getElementById("myCanvas");
+            const link = document.createElement('a');
+            link.download = 'canvas_image.png';
+            link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            link.click();
         }
     </script>
 </body>
